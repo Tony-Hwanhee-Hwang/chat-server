@@ -1,0 +1,30 @@
+schema{
+	subscription: Subscription
+}
+
+type Chat {
+	id: ID!
+	sender: User!
+	message: String!
+	date: String!
+	isRead: Boolean!
+}
+
+type User {
+	id: ID!
+	nickName: String!
+	avatarUrl: String
+}
+
+type Query {
+	chatting: [Chat]!
+}
+
+type Mutation { 
+	makeUser(nickName:String!, avatarUrl:String): User!
+	write(senderId:Int!, message:String!): Chat!
+}
+
+type Subscription {
+	newChat: Chat
+}
